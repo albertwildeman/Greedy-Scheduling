@@ -1,5 +1,7 @@
 import os
 import numpy as np
+
+
 def get_array(filename):
 
     npy_version_exists = os.path.isfile(filename + ".npy")
@@ -16,8 +18,7 @@ def txt_to_npy(filename):
 
     raw_lines = [x[:-1].split(" ") for x in file_array.readlines()]
 
-    nJobs = int(raw_lines[0][0])
-    jobs = np.array([[int(x), int(y)] for x, y in raw_lines[1:]])
+    jobs = np.array([(int(x),int(y)) for x, y in raw_lines[1:]])
 
     file_array.close()
     np.save(filename, jobs)
